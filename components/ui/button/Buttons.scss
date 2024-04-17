@@ -1,0 +1,26 @@
+.button {
+  padding: 10px;
+
+  border-radius: 10px;
+
+  border: 2px solid coral;
+
+  background-color: #fff;
+
+  font-weight: 600;
+
+  color: coral;
+
+  transition: .3s;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: coral;
+      color: #ffffff
+    }
+  }
+}

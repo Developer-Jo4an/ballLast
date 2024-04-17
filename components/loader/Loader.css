@@ -1,0 +1,40 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.loader__spinner {
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+}
+.loader__spinner:before, .loader__spinner:after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+}
+.loader__spinner:after {
+  box-shadow: 0 2px 0 #FF3D00 inset;
+  animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=Loader.css.map */
