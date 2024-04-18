@@ -1,8 +1,9 @@
+
 const Game = () => {
   return (
-    <section className={ 'game' }>
-      <h1>Hello game</h1>
-    </section>
+    <div>
+      <h1>Game</h1>
+    </div>
   )
 }
 

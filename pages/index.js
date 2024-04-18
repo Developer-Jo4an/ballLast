@@ -1,45 +1,55 @@
-import Button from '../components/ui/button/Button'
-import Loader from '../components/loader/Loader'
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useRouter } from 'next/router'
-import {
-  useTodosList,
-  useTodosState,
-  setTodos,
-  TODOS_LOADING_COMPLETE,
-  TODOS_LOADING,
-  getTodos,
-  TODOS_STATIC
-} from '../redux/reducer/todos'
+import { useForm } from 'react-hook-form'
+import { MdError } from 'react-icons/md'
+import { loginUsingToken, useAuthState } from '../redux/reducer/auth'
+import { inputPasswordSettings, inputUsernameSettings } from '../constants/auth/input'
+import Button from '../components/ui/button/Button'
 
 export default function Home() {
-  const router = useRouter()
   const dispatch = useDispatch()
+  const authState = useAuthState()
 
-  const todosState = useTodosState()
-  const todosList = useTodosList()
-
-  const goToAuth = () => router.push('/auth')
-  const getTodosRequest = () => dispatch(getTodos())
-
-  useLayoutEffect(() => {
-    const todos = JSON.parse(localStorage.getItem('todos'))
-    if (todos) {
-      dispatch(setTodos({
-        nextState: TODOS_LOADING_COMPLETE,
-        todos
-      }))
-    }
+  useEffect(() => {
+    dispatch(loginUsingToken())
   }, [])
 
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const onSubmit = data => {
+  }
+
   return (
-    <div className="container">
-      { todosState === TODOS_STATIC && <Button title={ 'Get todos' } onClick={ getTodosRequest } /> }
-      { todosState === TODOS_LOADING && <Loader/> }
-      { todosState === TODOS_LOADING_COMPLETE && todosList.map(todo => <div key={ todo.id }>{ JSON.stringify(todo) }</div>) }
-      { todosState === TODOS_LOADING_COMPLETE && <Button title={ 'Далее' } onClick={ goToAuth } /> }
-    </div>
+    <section className={ 'auth' }>
+      <form className={ 'auth__form' } onSubmit={ handleSubmit(onSubmit) }>
+        <div className={ 'auth__chunk' }>
+          <label className={ 'text-label' } htmlFor={ 'username' }>
+            Логин
+            <input
+              id={ 'username' }
+              type={ 'text' }
+              defaultValue={ 'kminchelle' }
+              className={ 'text-input' }
+              { ...register('username', inputUsernameSettings) }
+            />
+          </label>
+          { errors.username && <span className={ 'auth__error-message' }><MdError/>{ errors.username.message }</span> }
+        </div>
+        <div className={ 'auth__chunk' }>
+          <label className={ 'text-label' } htmlFor={ 'password' }>
+            Пароль
+            <input
+              id={ 'password' }
+              type={ 'password' }
+              defaultValue={ '0lelplR' }
+              className={ 'text-input' }
+              { ...register('password', inputPasswordSettings) }
+            />
+          </label>
+          { errors.password && <span className={ 'auth__error-message' }><MdError/>{ errors.password.message }</span> }
+        </div>
+        <Button type={ 'submit' } title={ 'Войти' } />
+      </form>
+    </section>
   )
 }
 

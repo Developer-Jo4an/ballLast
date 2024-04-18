@@ -87,7 +87,6 @@
 
 .auth__chunk {
   display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 10px;
 }
@@ -100,4 +99,14 @@
   color: red;
 
   font-size: 12px;
+}
+
+.text-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  font-size: 16px;
+
 }
