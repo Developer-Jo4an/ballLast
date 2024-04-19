@@ -1,0 +1,25 @@
+{
+  "controls": {},
+  "assetsSettings": {
+    "assetsUrl": "/assets",
+    "materialPrefix": "mat",
+    "texturePrefix": "tex",
+    "replaceMaterials": [],
+    "textures": [
+      {
+        "type": "texture",
+        "subtype": "pixijs",
+        "name": "ball",
+        "path": "assets/images/game/ball.png",
+        "fileName": "ball.png"
+      },
+      {
+        "type": "texture",
+        "subtype": "pixijs",
+        "name": "pole",
+        "path": "assets/images/game/pole.png",
+        "fileName": "pole.png"
+      }
+    ]
+  }
+}

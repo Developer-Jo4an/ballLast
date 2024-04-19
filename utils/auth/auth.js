@@ -1,11 +1,8 @@
-export const isAuth = () => {
-  const { authtoken } = document.cookie
-  .split(';')
-  .map(cookie => cookie.trim().split('='))
-  .reduce((accumulator, [key, value]) => ({
-    ...accumulator,
-    [key]: value
-  }), {})
-
-  return authtoken
-}
+export const convertCookie = () => {
+  return document.cookie
+  .split('; ')
+  .reduce((acc, cookieItem) => {
+    const [key, value] = cookieItem.split('=');
+    return {...acc, [key]: value};
+  }, {});
+};

@@ -1,0 +1,9 @@
+[
+  {
+    "subtype": "pixijs",
+    "type": "scene",
+    "name": "alchimist",
+    "sceneName": "alchimist",
+    "path": "assets/animations/"
+  }
+]

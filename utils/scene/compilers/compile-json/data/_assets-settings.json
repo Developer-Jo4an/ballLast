@@ -1,0 +1,16 @@
+{
+  "assetsUrl": "/assets",
+  "materialPrefix": "mat",
+  "texturePrefix": "tex",
+  "replaceMaterials": [],
+  "images": [
+    {
+      "path": "assets/images/game/ball.png",
+      "name": "ball"
+    },
+    {
+      "path": "assets/images/game/pole.png",
+      "name": "pole"
+    }
+  ]
+}
